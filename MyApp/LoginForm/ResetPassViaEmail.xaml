@@ -1,0 +1,70 @@
+﻿<Window x:Class="MyApp.ResetPassViaEmail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyApp" xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="ResetPassViaEmail" Height="450" Width="430" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Grid.RowSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#632610" Offset="0.4"/>
+                    <GradientStop Color="#B3541E" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <IconPacks:PackIconMaterial Kind="CloseBox" Foreground="White" Margin="400,6,0,0" Width="25" Height="25" ToolTip="Close" MouseDown="PackIconMaterial_MouseDown" />
+        <Label Content="Reset password via email" Foreground="White" FontSize="28" Width="400" HorizontalContentAlignment="Center" Margin="0,30,0,0"/>
+
+        <StackPanel Grid.Row="1">
+
+            <!-- New Password -->
+            <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Label Content="New Password: " Foreground="Yellow" FontSize="18" Width="300" HorizontalContentAlignment="Center"/>
+                <PasswordBox x:Name="TxBxUserNewPass" FontWeight="Light" FontSize="22" HorizontalAlignment="Left" Foreground="White"
+                                     Password="" Background="Transparent" BorderThickness="0" Width="270"
+                                     HorizontalContentAlignment="Left" Opacity="1" Height="30"  Margin="-300,30,0,0" ToolTip="Password must be more than 8 characters, and it's prefered to contains special characters."/>
+
+                <TextBox x:Name="NewPasswordUnmask" Width="270" Height="30" HorizontalContentAlignment="Left" Background="Transparent"  Margin="-300,30,0,0" 
+                                     BorderThickness="0" Visibility="Hidden" FontWeight="Light" FontSize="22" Foreground="White" Opacity="1" HorizontalAlignment="Left"/>
+                <!-- Icon -->
+                <IconPacks:PackIconMaterial Kind="Eye" x:Name="EyeOnNewPassHide" VerticalAlignment="Center" Margin="-20,30,0,0" Foreground="White" ToolTip="Show password" MouseDown="EyeOnNewPassHide_MouseDown" />
+                <IconPacks:PackIconMaterial Kind="EyeOff" x:Name="EyeOffNewPassVisible" Visibility="Hidden" VerticalAlignment="Center" Margin="-20,30,0,0" Foreground="White" ToolTip="Hide password" MouseDown="EyeOffNewPassVisible_MouseDown" />
+
+            </StackPanel>
+            <Border Width="300" Height="2" Background="White" Opacity="0.5" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+
+            <!-- Confirm Password -->
+            <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="0,50,0,0">
+                <Label Content="Confirm Password: " Foreground="Yellow" FontSize="18" Width="300" HorizontalContentAlignment="Center"/>
+                <PasswordBox x:Name="TxBxUserConfirmPass" FontWeight="Light" FontSize="22" HorizontalAlignment="Left" Foreground="White"
+                                     Password="" Background="Transparent" BorderThickness="0" Width="270"
+                                     HorizontalContentAlignment="Left" Opacity="1" Height="30" Margin="-300,30,0,0" ToolTip="It must match the password."/>
+
+                <TextBox x:Name="ConfirmPasswordUnmask" Width="270" Height="30" HorizontalContentAlignment="Left" Background="Transparent" Margin="-300,30,0,0"
+                                     BorderThickness="0" Visibility="Hidden" FontWeight="Light" FontSize="22" Foreground="White" Opacity="1" HorizontalAlignment="Left"/>
+                <!-- Icon -->
+                <IconPacks:PackIconMaterial Kind="Eye" x:Name="EyeOnConfirmPassHide" VerticalAlignment="Center" Margin="-20,30,0,0" Foreground="White" ToolTip="Show password" MouseDown="EyeOnConfirmPassHide_MouseDown" />
+                <IconPacks:PackIconMaterial Kind="EyeOff" x:Name="EyeOffConfirmPassVisible" Visibility="Hidden" VerticalAlignment="Center" Margin="-20,30,0,0"  Foreground="White" ToolTip="Hide password" MouseDown="EyeOffConfirmPassVisible_MouseDown" />
+
+            </StackPanel>
+            <Border Width="300" Height="2" Background="White" Opacity="0.5" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,10" HorizontalAlignment="Center">
+                <Button Name="BtnReset" Width="110" Height="40" Content="Reset" FontSize="20" Background="Transparent" Foreground="White" ToolTip="Click to reset your password." Click="BtnReset_Click" MouseEnter="BtnReset_MouseEnter"/>
+            </StackPanel>
+            <Label Name="BackToLogin" Foreground="White" FontSize="18" Height="36" VerticalAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Click to return to login form." MouseDown="BackToLogin_MouseDown" >
+                <TextBlock TextDecorations="Underline">Login</TextBlock>
+            </Label>
+        </StackPanel>
+    </Grid>
+</Window>

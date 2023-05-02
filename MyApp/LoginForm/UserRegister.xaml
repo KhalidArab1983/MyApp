@@ -1,0 +1,141 @@
+﻿<Window x:Class="MyApp.UserRegister"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyApp" xmlns:IconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="UserRegister" Height="450" Width="430" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None" ResizeMode="NoResize"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="White" BorderThickness="2" CornerRadius="10" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#632610" Offset="0.4"/>
+                    <GradientStop Color="#B3541E" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <IconPacks:PackIconMaterial Kind="CloseBox" Foreground="White" Margin="400,6,0,0" Width="25" Height="25" ToolTip="Close" MouseDown="PackIconMaterial_MouseDown" />
+        <WrapPanel VerticalAlignment="Center">
+
+            <StackPanel Width="120">
+                <WrapPanel Name="container" Width="60" Height="60">
+                    <Image Name="ImageBox" Source="{Binding ElementName=LabelPath, Path=Content}" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="UniformToFill"/>
+                    <WrapPanel.OpacityMask>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Border Height="{Binding ElementName=container, Path=ActualHeight}"
+                                        Width="{Binding ElementName=container, Path=ActualWidth}"
+                                        Background="White" CornerRadius="40"/>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </WrapPanel.OpacityMask>
+                </WrapPanel>
+                <Label Name="SelectImageLabel" Foreground="White" FontSize="10" Width="80" Height="25" MouseDown="SelectImageLabel_MouseDown" >
+                    <TextBlock TextDecorations="Underline">Select an Image</TextBlock>
+                </Label>
+            </StackPanel>
+
+
+            <StackPanel VerticalAlignment="Center" Width="200">
+                <TextBlock Text="MyApp" FontWeight="SemiBold" FontSize="35" Foreground="White" HorizontalAlignment="Center" />
+                <TextBlock Text="REGISTER" FontWeight="Light" FontSize="25" Foreground="White" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Width="70">
+                <Label Name="LabelPath" Content="" Foreground="Transparent"/>
+            </StackPanel>
+        </WrapPanel>
+
+        <StackPanel Grid.Row="1">
+
+            <!-- User Name -->
+            <StackPanel Orientation="Horizontal" Width="400" HorizontalAlignment="Center">
+                <Label Content="User Name:" Foreground="White" FontSize="18" Width="110" Margin="0,0,0,0" HorizontalContentAlignment="Left"/>
+                <TextBox Name="TxBxUserName" FontWeight="Light" FontSize="22" HorizontalAlignment="Right" Foreground="White"
+                         Text="" Background="Transparent" BorderThickness="0" Width="260"
+                         HorizontalContentAlignment="Left" Opacity="1" Height="40" ToolTip="Enter user name."/>
+                <!-- Icon -->
+                <IconPacks:PackIconMaterial Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+
+            </StackPanel>
+            <Border Name="BorderUserName" Width="380" Height="2" Background="White" Opacity="0.5" Margin="0,0,28,0" HorizontalAlignment="Right"/>
+
+            <!-- Email -->
+            <StackPanel Orientation="Horizontal" Width="400" HorizontalAlignment="Center" Margin="0,15,0,0">
+                <Label Content="Email: " Foreground="White" FontSize="18" Width="110" HorizontalContentAlignment="Left"/>
+                <TextBox Name="TxBxUserEmail" FontWeight="Light" FontSize="22" HorizontalAlignment="Center" Foreground="White"
+                         Text="" Background="Transparent" BorderThickness="0" Width="260"
+                         HorizontalContentAlignment="Left" Opacity="1" Height="40" ToolTip="Please enter a real email, to recover your password in case you forget it."/>
+                <!-- Icon -->
+                <IconPacks:PackIconMaterial Kind="Email" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+
+            </StackPanel>
+            <Border Name="BorderEmail" Width="380" Height="2" Background="White" Opacity="0.5" Margin="0,0,28,0" HorizontalAlignment="Right"/>
+
+
+            <WrapPanel>
+                <StackPanel Width="370" Margin="0,0,5,0">
+                    <!-- Password -->
+                    <StackPanel Orientation="Horizontal" Width="360" HorizontalAlignment="Center" Margin="15,15,0,0">
+                        <Label Content="Password: " Foreground="White" FontSize="18" Width="110" HorizontalContentAlignment="Left"/>
+                        <PasswordBox x:Name="TxBxUserPass" FontWeight="Light" FontSize="22" HorizontalAlignment="Center" Foreground="White"
+                             Password="" Background="Transparent" BorderThickness="0" Width="230"
+                             HorizontalContentAlignment="Left" Opacity="1" Height="30" ToolTip="Password must be more than 8 characters, and it's prefered to contains special characters."/>
+
+                        <TextBox Name="PasswordUnmask" Width="230" Height="30" HorizontalContentAlignment="Left" Margin="-230,0,0,0" Background="Transparent"
+                             BorderThickness="0" Visibility="Hidden" FontWeight="Light" FontSize="22" Foreground="White" Opacity="1"/>
+                        <!-- Icon -->
+                        <IconPacks:PackIconMaterial Kind="Eye" Name="EyeOnPassHide" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" ToolTip="Show password" MouseDown="EyeOnPassHide_MouseDown" />
+                        <IconPacks:PackIconMaterial Kind="EyeOff" Name="EyeOffPassVisible" Visibility="Hidden" VerticalAlignment="Center" Margin="-16,0,0,0" HorizontalAlignment="Center" Foreground="White" ToolTip="Hide password" MouseDown="EyeOffPassVisible_MouseDown" />
+
+                    </StackPanel>
+
+                    <Border Name="BorderPass" Width="350" Height="2" Background="White" Opacity="0.5" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+
+                    <!-- Confirm Password -->
+
+                    <StackPanel Orientation="Horizontal" Width="360" HorizontalAlignment="Center" Margin="15,15,0,0">
+                        <Label Content="Confirm: " Foreground="White" FontSize="18" Height="36" VerticalAlignment="Center" HorizontalContentAlignment="Left" Width="110"/>
+                        <PasswordBox Name="TxBxUserPassConfirm" FontWeight="Light" FontSize="22" HorizontalAlignment="Center" Foreground="White"
+                             Password="" Background="Transparent" BorderThickness="0" Width="230"
+                             HorizontalContentAlignment="Left" Opacity="1" Height="30" ToolTip="It must match the password"/>
+
+                        <TextBox Name="PasswordConfirmUnmask" Width="230" Height="30" HorizontalContentAlignment="Left" Margin="-230,0,0,0" Background="Transparent"
+                             BorderThickness="0" Visibility="Hidden" FontWeight="Light" FontSize="22" Foreground="White" Opacity="1"/>
+                        <!-- Icon -->
+
+                        <IconPacks:PackIconMaterial Kind="Eye" Name="EyeOnPassConfirmHide" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" ToolTip="Show password" MouseDown="EyeOnPassConfirmHide_MouseDown" />
+                        <IconPacks:PackIconMaterial Kind="EyeOff" Name="EyeOffPassConfirmVisible" Visibility="Hidden" VerticalAlignment="Center" Margin="-16,0,0,0" HorizontalAlignment="Center" Foreground="White" ToolTip="Hide password" MouseDown="EyeOffPassConfirmVisible_MouseDown" />
+
+                    </StackPanel>
+                    <Border Name="BorderPassConfirm" Width="350" Height="2" Background="White" Opacity="0.5" Margin="0,0,0,0" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <Button Name="BtnPassGenerate" Height="95" Width="30" Background="#741720" ToolTip="Generate a strong Password" Click="BtnPassGenerate_Click" VerticalAlignment="Bottom" MouseEnter="BtnPassGenerate_MouseEnter">
+                    <IconPacks:PackIconMaterial Name="Icon1" Kind="FormTextboxPassword" Foreground="White" Width="22" Height="22"/>
+                </Button>
+
+            </WrapPanel>
+
+            <TextBox Name="ErrorTextBlock" Background="Transparent" FontSize="15" Width="380" Height="60" Foreground="Red" Margin="0,0,0,-60" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" TextAlignment="Center" />
+            <TextBox Name="successTextBlock" Background="Transparent" FontSize="15" Width="380" Height="60" Foreground="Green" Margin="0,0,0,-30" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" TextAlignment="Center" />
+            <!--Buttons-->
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0" HorizontalAlignment="Center">
+                <Button Name="BtnLogin_OnRegister" Width="100" Height="40" Content="LOGIN" FontSize="20" Margin="0,0,50,0"  Background="Transparent" Foreground="White" ToolTip="Click to return to login form" Click="BtnClickLogin_OnRegister" MouseEnter="BtnClickLogin_OnRegister_MouseEnter"/>
+                <Button Name="BtnRegister_OnRegister" Width="100" Height="40" Content="REGISTER" FontSize="20" Background="Transparent" Foreground="White" ToolTip="Click to register" Click="BtnClickRegister_OnRegister" MouseEnter="BtnClickRegister_OnRegister_MouseEnter"/>
+
+            </StackPanel>
+            <StackPanel>
+                <Label Name="TextReset" Foreground="White" FontSize="18" Height="36" VerticalAlignment="Center" HorizontalContentAlignment="Center" ToolTip="Click to empty all fields." MouseDown="TextReset_MouseDown">
+                    <TextBlock TextDecorations="Underline">Reset</TextBlock>
+                </Label>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
